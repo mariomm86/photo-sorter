@@ -166,4 +166,15 @@ On the final screen, **Undo this move**, then **Confirm**, moves every file back
 
 ## 6. Updating
 
-If you installed Photo Sorter with git (GitHub), `Start Photo Sorter.command` downloads the newest version each time it starts. That download contains only Photo Sorter's own code; nothing is sent. Without git, replace the `PhotoSorter` folder with the new one; your saved work in `~/.photosorter` is kept.
+If you installed Photo Sorter with git (GitHub), `Start Photo Sorter.command` downloads the newest version each time it starts. That download contains only Photo Sorter's own code; nothing is sent. It never asks for a login: if it cannot reach GitHub, it simply starts the version already on the computer.
+
+For a private repository, log in to GitHub once per computer, in Terminal:
+
+```
+cd ~/PhotoSorter        # or wherever you cloned it
+git pull
+```
+
+Enter your GitHub username and, as password, a personal access token (github.com › Settings › Developer settings › Personal access tokens › Fine-grained tokens; give it read access to the repository's contents). The Mac stores it in the Keychain, so it is not asked again. Alternatively, install GitHub's `gh` tool and run `gh auth login` once.
+
+Without git, replace the `PhotoSorter` folder with the new one; your saved work in `~/.photosorter` is kept.

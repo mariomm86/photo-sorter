@@ -4,9 +4,16 @@ cd "$(dirname "$0")" || exit 1
 
 # If this folder was installed with git (GitHub), fetch the latest version first.
 # This only downloads Photo Sorter's own code; no photo or data is sent.
+# It never asks for a login and gives up after a few seconds without network:
+# if the update cannot be fetched, the version already on this computer starts.
 if [ -d .git ] && /usr/bin/xcrun --find git >/dev/null 2>&1; then
   echo "Checking for a newer version of Photo Sorter..."
-  git pull --ff-only --quiet 2>/dev/null && echo "Up to date." || echo "Could not update; starting the version on this computer."
+  if GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND="ssh -o BatchMode=yes -o ConnectTimeout=8" \
+     git -c http.lowSpeedLimit=1000 -c http.lowSpeedTime=10 pull --ff-only --quiet 2>/dev/null; then
+    echo "Up to date."
+  else
+    echo "Could not check for updates (offline, or GitHub login not set up). Starting the version on this computer."
+  fi
 fi
 
 PY=""
