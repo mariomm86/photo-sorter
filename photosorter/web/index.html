@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Sorter</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7ab8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+    <span class="title">Photo Sorter</span>
+    <span class="pill" id="where">Local only · offline</span>
+  </div>
+  <nav aria-label="Steps" class="steps" id="steps"></nav>
+  <button type="button" class="btn ghost small" id="quit">Quit</button>
+</header>
+<div id="toast" role="status" aria-live="polite"></div>
+<main id="app"></main>
+<div id="overlay" class="overlay" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
